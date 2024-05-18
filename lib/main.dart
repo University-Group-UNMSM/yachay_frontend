@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:yachay/src/features/registro/registro.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +16,13 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Registro'),
+      home: const MyAppRegistro(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title});
+  const MyHomePage({super.key, required this.title});
 
   final String title;
 
@@ -77,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Center(
                   child: Text(
                     'Regístrate',
-                    style: Theme.of(context).textTheme.headline6,
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -95,8 +96,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10.0),
                         child: Text(
                           'Estudiante',
                           style: TextStyle(fontSize: 16.0),
@@ -114,8 +115,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10.0),
                         child: Text(
                           'Profesor',
                           style: TextStyle(fontSize: 16.0),
@@ -125,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
                 const SizedBox(height: 20),
-                Row(
+                const Row(
                   children: [
                     Text(
                       'Nombre',
@@ -149,7 +150,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 const SizedBox(height: 20),
-                Text(
+                const Text(
                   'Apellido',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
@@ -169,7 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
                 const SizedBox(height: 20),
-                Row(
+                const Row(
                   children: [
                     Text(
                       'Correo electrónico',
@@ -197,7 +198,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
+                    const Row(
                       children: [
                         Expanded(
                           child: Text(
@@ -273,7 +274,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         });
                       },
                     ),
-                    Text('Acepto los términos y condiciones'),
+                    const Text('Acepto los términos y condiciones'),
                   ],
                 ),
                 const SizedBox(height: 20),
@@ -282,7 +283,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       // Implementar inicio de sesión
                     },
-                    child: Text('Iniciar Sesión'),
+                    child: const Text('Iniciar Sesión'),
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -291,7 +292,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       // Implementar inicio de sesión con Google
                     },
-                    child: Text('Iniciar Sesión con Google'),
+                    child: const Text('Iniciar Sesión con Google'),
                   ),
                 ),
               ],

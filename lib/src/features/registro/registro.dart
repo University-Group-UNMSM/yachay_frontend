@@ -1,7 +1,5 @@
 // ignore_for_file: unused_field
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 final _formKey = GlobalKey<FormState>();
 
@@ -19,12 +17,13 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
   String _contrasena = '';
   String _repeticionContrasena = '';
   bool _aceptaTerminos = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(30, 30, 44, 100),
       body: ListView(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 30.0,
           vertical: 50.0,
         ),
@@ -37,92 +36,112 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                 Center(
                   child: Image.asset('images/logo.png'),
                 ),
-                Text(
-                  'Registrate',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Open Sans',
-                    fontSize: 36.0,
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Registrarte',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Open Sans',
+                      fontSize: 36.0,
+                    ),
                   ),
                 ),
-                SizedBox(height: 10),
-                Text(
-                  '¿Cuál es su función?',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'PT Sans',
-                    fontSize: 14.0,
+                const SizedBox(height: 10),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    '¿Cuál es tu función?',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'PT Sans',
+                      fontSize: 14.0,
+                    ),
                   ),
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    TextButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Colors.transparent), // Botón transparente
-                        overlayColor: MaterialStateProperty.all<Color>(
-                            Colors.white.withOpacity(
-                                0.2)), // Color de superposición al presionar
-                        side: MaterialStateProperty.all<BorderSide>(
-                          BorderSide(
-                              color: Colors.white, width: 2), // Bordes blancos
-                        ),
-                        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                          EdgeInsets.symmetric(
-                              vertical: 12.0,
-                              horizontal: 40.0), // Ajuste del tamaño del botón
-                        ),
-                      ),
-                      onPressed: () {},
-                      child: Text(
-                        'Estudiante',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12.0,
-                          fontFamily: 'PT Sans',
+                    Expanded(
+                      child: TextButton(
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Colors.transparent), // Botón transparente
+                            overlayColor: MaterialStateProperty.all<Color>(
+                                Colors.white.withOpacity(
+                                    0.2)), // Color de superposición al presionar
+                            side: MaterialStateProperty.all<BorderSide>(
+                              const BorderSide(
+                                  color: Colors.white,
+                                  width: 2), // Bordes blancos
+                            ),
+                            padding:
+                                MaterialStateProperty.all<EdgeInsetsGeometry>(
+                              const EdgeInsets.symmetric(
+                                  vertical: 20.0,
+                                  horizontal:
+                                      50.0), // Ajuste del tamaño del botón
+                            ),
+                            shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)))),
+                        onPressed: () {},
+                        child: const Text(
+                          'Estudiante',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14.0,
+                            fontFamily: 'PT Sans',
+                          ),
                         ),
                       ),
                     ),
-                    SizedBox(width: 20),
-                    TextButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Colors.transparent), // Botón transparente
-                        overlayColor: MaterialStateProperty.all<Color>(
-                            Colors.white.withOpacity(
-                                0.2)), // Color de superposición al presionar
-                        side: MaterialStateProperty.all<BorderSide>(
-                          BorderSide(
-                              color: Colors.white, width: 2), // Bordes blancos
-                        ),
-                        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                          EdgeInsets.symmetric(
-                              vertical: 12.0,
-                              horizontal: 40.0), // Ajuste del tamaño del botón
-                        ),
-                      ),
-                      onPressed: () {},
-                      child: Text(
-                        'Profesor',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 12.0,
-                          fontFamily: 'PT Sans',
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: TextButton(
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all<Color>(
+                                Colors.transparent), // Botón transparente
+                            overlayColor: MaterialStateProperty.all<Color>(
+                                Colors.white.withOpacity(
+                                    0.2)), // Color de superposición al presionar
+                            side: MaterialStateProperty.all<BorderSide>(
+                              const BorderSide(
+                                  color: Colors.white,
+                                  width: 2), // Bordes blancos
+                            ),
+                            padding:
+                                MaterialStateProperty.all<EdgeInsetsGeometry>(
+                              const EdgeInsets.symmetric(
+                                  vertical: 20.0, horizontal: 50.0),
+                            ),
+                            shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)))),
+                        onPressed: () {},
+                        child: const Text(
+                          'Profesor',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14.0,
+                            fontFamily: 'PT Sans',
+                          ),
                         ),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Row(
                   children: [
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Nombre',
                             style: TextStyle(
                               color: Colors.white,
@@ -130,19 +149,18 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                               fontFamily: 'PT Sans',
                             ),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           TextFormField(
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                            enableInteractiveSelection: false,
+                            style:
+                                const TextStyle(color: Colors.white, height: 1),
+                            enableInteractiveSelection: true,
                             autofocus: true,
                             textCapitalization: TextCapitalization.characters,
                             decoration: InputDecoration(
                               filled: true,
-                              fillColor: Color.fromRGBO(52, 54, 70, 100),
+                              fillColor: const Color.fromRGBO(52, 54, 70, 100),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
+                                borderRadius: BorderRadius.circular(12),
                               ),
                             ),
                             validator: (value) {
@@ -158,14 +176,14 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                         width:
                             10), // Espacio entre los campos de nombre y apellido
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Apellido',
                             style: TextStyle(
                               color: Colors.white,
@@ -173,19 +191,18 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                               fontFamily: 'PT Sans',
                             ),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           TextFormField(
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
-                            enableInteractiveSelection: false,
+                            style:
+                                const TextStyle(color: Colors.white, height: 1),
+                            enableInteractiveSelection: true,
                             autofocus: true,
                             textCapitalization: TextCapitalization.characters,
                             decoration: InputDecoration(
                               filled: true,
-                              fillColor: Color.fromRGBO(52, 54, 70, 100),
+                              fillColor: const Color.fromRGBO(52, 54, 70, 100),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
+                                borderRadius: BorderRadius.circular(12),
                               ),
                             ),
                             validator: (value) {
@@ -203,12 +220,11 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                     ),
                   ],
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment
-                      .start, // Alinea los elementos al inicio del eje transversal (horizontal)
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Correo electrónico',
                       style: TextStyle(
                         color: Colors.white,
@@ -216,19 +232,17 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                         fontFamily: 'PT Sans',
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     TextFormField(
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
+                      style: const TextStyle(color: Colors.white, height: 1),
                       enableInteractiveSelection: false,
                       autofocus: true,
                       textCapitalization: TextCapitalization.characters,
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: Color.fromRGBO(52, 54, 70, 100),
+                        fillColor: const Color.fromRGBO(52, 54, 70, 100),
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                          borderRadius: BorderRadius.circular(12),
                         ),
                       ),
                       validator: (value) {
@@ -250,14 +264,14 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                     ),
                   ],
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Row(
                   children: [
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Contraseña',
                             style: TextStyle(
                               color: Colors.white,
@@ -265,20 +279,19 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                               fontFamily: 'PT Sans',
                             ),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           TextFormField(
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
+                            style:
+                                const TextStyle(color: Colors.white, height: 1),
                             obscureText: true,
                             enableInteractiveSelection: false,
                             autofocus: true,
                             textCapitalization: TextCapitalization.characters,
                             decoration: InputDecoration(
                               filled: true,
-                              fillColor: Color.fromRGBO(52, 54, 70, 100),
+                              fillColor: const Color.fromRGBO(52, 54, 70, 100),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
+                                borderRadius: BorderRadius.circular(12),
                               ),
                             ),
                             validator: (value) {
@@ -290,21 +303,21 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                               }
                               return null;
                             },
-                            onSaved: (value) {
-                              _contrasena = value!;
+                            onChanged: (value) {
+                              _contrasena = value;
                             },
                           ),
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                         width:
                             10), // Espacio entre los campos de nombre y apellido
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Repetir contraseña',
                             style: TextStyle(
                               color: Colors.white,
@@ -312,20 +325,19 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                               fontFamily: 'PT Sans',
                             ),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           TextFormField(
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
+                            style:
+                                const TextStyle(color: Colors.white, height: 1),
                             obscureText: true,
                             enableInteractiveSelection: false,
                             autofocus: true,
                             textCapitalization: TextCapitalization.characters,
                             decoration: InputDecoration(
                               filled: true,
-                              fillColor: Color.fromRGBO(52, 54, 70, 100),
+                              fillColor: const Color.fromRGBO(52, 54, 70, 100),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
+                                borderRadius: BorderRadius.circular(12),
                               ),
                             ),
                             validator: (value) {
@@ -337,8 +349,8 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                               }
                               return null;
                             },
-                            onSaved: (value) {
-                              _repeticionContrasena = value!;
+                            onChanged: (value) {
+                              _repeticionContrasena = value;
                             },
                           ),
                         ],
@@ -346,16 +358,18 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                     ),
                   ],
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 CheckboxListTile(
-                  title: Text(
+                  title: const Text(
                     'Al registrarme acepto los términos y condiciones y la política de privacidad de OnlyCourses.',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 10.0,
+                      fontSize: 11.0,
                       fontFamily: 'PT Sans',
                     ),
                   ),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   controlAffinity: ListTileControlAffinity.leading,
                   value: _aceptaTerminos,
                   onChanged: (newValue) {
@@ -364,7 +378,7 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                     });
                   },
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 TextButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
@@ -374,22 +388,35 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                       Colors.white.withOpacity(0.2),
                     ),
                     minimumSize: MaterialStateProperty.all<Size>(
-                      Size(
+                      const Size(
                           double.infinity, 50), // Ancho máximo y altura deseada
                     ),
                   ),
                   onPressed: () {
                     _formKey.currentState!.validate();
                   },
-                  child: Text(
-                    'Regístrate',
+                  child: const Text(
+                    'Registrarse',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 12.0,
+                      fontSize: 14.0,
                       fontFamily: 'PT Sans',
                     ),
                   ),
                 ),
+                const SizedBox(
+                  height: 15,
+                ),
+                const Text(
+                  '¿Ya tienes una cuenta? Inicia sesión',
+                  style: TextStyle(color: Colors.white),
+                ),
+                const InkWell(
+                  child: Text(
+                    'desde aquí',
+                    style: TextStyle(color: Colors.blue),
+                  ),
+                )
               ],
             ),
           ),
