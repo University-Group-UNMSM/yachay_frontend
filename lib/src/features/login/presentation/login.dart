@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter/widgets.dart';
-import 'package:probandoflutter/main.dart';
+import 'package:yachay/src/features/login/data/user-data.dart';
+import 'package:yachay/src/features/login/data/user.dart';
 
 final _formKey = GlobalKey<FormState>();
 
@@ -12,42 +11,14 @@ class MyAppLogin extends StatefulWidget {
   State<MyAppLogin> createState() => _MyAppLoginState();
 }
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyAppLogin(),
-    );
-  }
-}
-
-class User {
-  final String email;
-  final String pass;
-
-  User(this.email, this.pass);
-
-  bool verificarCredenciales(String emailToCheck, String passToCheck) {
-    return email == emailToCheck && pass == passToCheck;
-  }
-}
-
 class _MyAppLoginState extends State<MyAppLogin> {
   bool _aceptaRecordarSesion = false;
   bool _showPassword = false;
   TextEditingController user = TextEditingController();
   TextEditingController pass = TextEditingController();
 
-  final List<User> _users = [
-    User('user1', 'pass1'),
-    User('user2', 'pass2'),
-    User('user3', 'pass3'),
-  ];
-
   bool validacionDatos(String email, String pass) {
-    for (User user in _users) {
+    for (User user in users) {
       if (user.verificarCredenciales(email, pass)) {
         return true;
       }
@@ -58,9 +29,9 @@ class _MyAppLoginState extends State<MyAppLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(30, 30, 44, 100),
+      backgroundColor: const Color.fromARGB(255, 30, 30, 44),
       body: ListView(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 30.0,
           vertical: 15.0,
         ),
@@ -71,9 +42,9 @@ class _MyAppLoginState extends State<MyAppLogin> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
-                  child: Image.asset('images/yachaylogo.png'),
+                  child: Image.asset('../assets/isotipo-azul.png'),
                 ),
-                Text(
+                const Text(
                   'Bienvenido',
                   style: TextStyle(
                     color: Colors.white,
@@ -81,8 +52,8 @@ class _MyAppLoginState extends State<MyAppLogin> {
                     fontSize: 25.0,
                   ),
                 ),
-                SizedBox(height: 30),
-                Text(
+                const SizedBox(height: 30),
+                const Text(
                   '¡Bienvenido de vuelta! Ingresa tus datos, por favor.',
                   style: TextStyle(
                     color: Colors.white,
@@ -90,11 +61,11 @@ class _MyAppLoginState extends State<MyAppLogin> {
                     fontSize: 14.0,
                   ),
                 ),
-                SizedBox(height: 30),
+                const SizedBox(height: 30),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Correo electrónico',
                       style: TextStyle(
                         color: Colors.white,
@@ -102,20 +73,22 @@ class _MyAppLoginState extends State<MyAppLogin> {
                         fontFamily: 'PT Sans',
                       ),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     TextFormField(
                       controller: user,
                       enableInteractiveSelection: false,
                       autofocus: true,
-                      textCapitalization: TextCapitalization.characters,
+                      textCapitalization:
+                          TextCapitalization.characters,
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: Color.fromRGBO(52, 54, 70, 100),
+                        fillColor:
+                            const Color.fromRGBO(52, 54, 70, 100),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                       ),
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Por favor ingresa tu correo electrónico';
@@ -125,14 +98,14 @@ class _MyAppLoginState extends State<MyAppLogin> {
                     ),
                   ],
                 ),
-                SizedBox(height: 15),
+                const SizedBox(height: 15),
                 Row(
                   children: [
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Contraseña',
                             style: TextStyle(
                               color: Colors.white,
@@ -140,18 +113,21 @@ class _MyAppLoginState extends State<MyAppLogin> {
                               fontFamily: 'PT Sans',
                             ),
                           ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           TextFormField(
                             controller: pass,
                             obscureText: !_showPassword,
                             enableInteractiveSelection: false,
                             autofocus: true,
-                            textCapitalization: TextCapitalization.characters,
+                            textCapitalization:
+                                TextCapitalization.characters,
                             decoration: InputDecoration(
                               filled: true,
-                              fillColor: Color.fromRGBO(52, 54, 70, 100),
+                              fillColor: const Color.fromRGBO(
+                                  52, 54, 70, 100),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0),
+                                borderRadius:
+                                    BorderRadius.circular(20.0),
                               ),
                               suffixIcon: InkWell(
                                 onTap: () {
@@ -167,7 +143,8 @@ class _MyAppLoginState extends State<MyAppLogin> {
                                 ),
                               ),
                             ),
-                            style: TextStyle(color: Colors.white),
+                            style:
+                                const TextStyle(color: Colors.white),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Ingrese su contraseña';
@@ -180,7 +157,7 @@ class _MyAppLoginState extends State<MyAppLogin> {
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -188,7 +165,7 @@ class _MyAppLoginState extends State<MyAppLogin> {
                       onTap: () {
                         // Pendiente la lógica para recuperar contraseña
                       },
-                      child: Text(
+                      child: const Text(
                         '¿Olvidaste tu contraseña?',
                         style: TextStyle(
                           fontFamily: 'PT Sans',
@@ -200,7 +177,7 @@ class _MyAppLoginState extends State<MyAppLogin> {
                     ),
                     Row(
                       children: [
-                        Text(
+                        const Text(
                           'Recuérdame',
                           style: TextStyle(
                             fontFamily: 'PT Sans',
@@ -221,7 +198,7 @@ class _MyAppLoginState extends State<MyAppLogin> {
                     ),
                   ],
                 ),
-                SizedBox(height: 35),
+                const SizedBox(height: 35),
                 TextButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
@@ -231,29 +208,35 @@ class _MyAppLoginState extends State<MyAppLogin> {
                       Colors.white.withOpacity(0.2),
                     ),
                     minimumSize: MaterialStateProperty.all<Size>(
-                      Size(double.infinity, 50),
+                      const Size(double.infinity, 50),
                     ),
                   ),
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       _formKey.currentState!.save();
-                      if (validacionDatos(user.text, pass.text) == true) {
+                      if (validacionDatos(user.text, pass.text) ==
+                          true) {
                         // Imprimir mensaje de éxito
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
+                          const SnackBar(
                             content: Text('Inicio exitoso'),
                           ),
                         );
+
+                        // Navegar a la nueva pantalla
+                        Navigator.pushReplacementNamed(
+                            context, '/home');
                       } else {
                         ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text('Correo o contraseña incorrectos'),
+                          const SnackBar(
+                            content: Text(
+                                'Correo o contraseña incorrectos'),
                           ),
                         );
                       }
                     }
                   },
-                  child: Text(
+                  child: const Text(
                     'Iniciar sesión',
                     style: TextStyle(
                       color: Colors.white,
@@ -262,29 +245,29 @@ class _MyAppLoginState extends State<MyAppLogin> {
                     ),
                   ),
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 SizedBox(
                   width: double.infinity,
                   child: OutlinedButton(
                     onPressed: () {
                       // Pendiente la lógica para iniciar sesión con Google
                     },
-                    child: Text('Iniciar sesión con Google',
+                    style: OutlinedButton.styleFrom(
+                      side: const BorderSide(color: Colors.white),
+                    ),
+                    child: const Text('Iniciar sesión con Google',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 14.0,
                             fontFamily: 'PT Sans')),
-                    style: OutlinedButton.styleFrom(
-                      side: BorderSide(color: Colors.white),
-                    ),
                   ),
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 InkWell(
                   onTap: () {
-                    // Pendiente la lógica para navegar a la pantalla de registro
+                    Navigator.pushNamed(context, '/register');
                   },
-                  child: Text(
+                  child: const Text(
                     '¿Aún no tienes una cuenta? Registrarte aquí.',
                     style: TextStyle(
                       fontFamily: 'PT Sans',

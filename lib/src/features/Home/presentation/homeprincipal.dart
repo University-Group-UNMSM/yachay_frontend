@@ -1,5 +1,6 @@
-import 'package:aprendiendoflutter/home.dart';
 import 'package:flutter/material.dart';
+import 'package:yachay/src/features/Home/presentation/cursos_list.dart';
+import 'package:yachay/src/features/MisCursos/presentation/miscursos.dart';
 
 class HomePrincipal extends StatefulWidget {
   const HomePrincipal({super.key});
@@ -22,15 +23,8 @@ class _HomePrincipalState extends State<HomePrincipal> {
               padding: const EdgeInsets.all(10),
               child: Image.asset('../assets/istotipo-yanachay.png'),
             ), // Nuevo widget leading
-            title: const Padding(
-              padding: EdgeInsets.all(10),
-              child: Icon(Icons.search),
-            ),
+
             actions: const [
-              Padding(
-                padding: EdgeInsets.all(10),
-                child: Icon(Icons.search),
-              ),
               Padding(
                 padding: EdgeInsets.all(10),
                 child: Icon(
@@ -94,12 +88,11 @@ class _HomePrincipalState extends State<HomePrincipal> {
     switch (_selectedIndex) {
       case 0:
         return const Center(
-          child: Home(),
+          child: CursosList(),
         ); // Reemplaza con tu vista
       case 1:
         return const Center(
-          child: Text('Mis Cursos',
-              style: TextStyle(color: Colors.white)),
+          child: MisCursos(),
         ); // Reemplaza con tu vista
       case 2:
         return const Center(

@@ -21,7 +21,7 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(30, 30, 44, 100),
+      backgroundColor: Color.fromARGB(255, 30, 30, 44),
       body: ListView(
         padding: const EdgeInsets.symmetric(
           horizontal: 30.0,
@@ -34,7 +34,7 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
-                  child: Image.asset('images/logo.png'),
+                  child: Image.asset('../assets/isotipo-azul.png'),
                 ),
                 const Align(
                   alignment: Alignment.centerLeft,
@@ -66,18 +66,20 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                     Expanded(
                       child: TextButton(
                         style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                Colors.transparent), // Botón transparente
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors
+                                    .transparent), // Botón transparente
                             overlayColor: MaterialStateProperty.all<Color>(
                                 Colors.white.withOpacity(
                                     0.2)), // Color de superposición al presionar
-                            side: MaterialStateProperty.all<BorderSide>(
+                            side:
+                                MaterialStateProperty.all<BorderSide>(
                               const BorderSide(
                                   color: Colors.white,
                                   width: 2), // Bordes blancos
                             ),
-                            padding:
-                                MaterialStateProperty.all<EdgeInsetsGeometry>(
+                            padding: MaterialStateProperty.all<
+                                EdgeInsetsGeometry>(
                               const EdgeInsets.symmetric(
                                   vertical: 20.0,
                                   horizontal:
@@ -102,18 +104,20 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                     Expanded(
                       child: TextButton(
                         style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                                Colors.transparent), // Botón transparente
+                            backgroundColor:
+                                MaterialStateProperty.all<Color>(Colors
+                                    .transparent), // Botón transparente
                             overlayColor: MaterialStateProperty.all<Color>(
                                 Colors.white.withOpacity(
                                     0.2)), // Color de superposición al presionar
-                            side: MaterialStateProperty.all<BorderSide>(
+                            side:
+                                MaterialStateProperty.all<BorderSide>(
                               const BorderSide(
                                   color: Colors.white,
                                   width: 2), // Bordes blancos
                             ),
-                            padding:
-                                MaterialStateProperty.all<EdgeInsetsGeometry>(
+                            padding: MaterialStateProperty.all<
+                                EdgeInsetsGeometry>(
                               const EdgeInsets.symmetric(
                                   vertical: 20.0, horizontal: 50.0),
                             ),
@@ -151,16 +155,19 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                           ),
                           const SizedBox(height: 10),
                           TextFormField(
-                            style:
-                                const TextStyle(color: Colors.white, height: 1),
+                            style: const TextStyle(
+                                color: Colors.white, height: 1),
                             enableInteractiveSelection: true,
                             autofocus: true,
-                            textCapitalization: TextCapitalization.characters,
+                            textCapitalization:
+                                TextCapitalization.characters,
                             decoration: InputDecoration(
                               filled: true,
-                              fillColor: const Color.fromRGBO(52, 54, 70, 100),
+                              fillColor: const Color.fromRGBO(
+                                  52, 54, 70, 100),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius:
+                                    BorderRadius.circular(12),
                               ),
                             ),
                             validator: (value) {
@@ -193,16 +200,19 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                           ),
                           const SizedBox(height: 10),
                           TextFormField(
-                            style:
-                                const TextStyle(color: Colors.white, height: 1),
+                            style: const TextStyle(
+                                color: Colors.white, height: 1),
                             enableInteractiveSelection: true,
                             autofocus: true,
-                            textCapitalization: TextCapitalization.characters,
+                            textCapitalization:
+                                TextCapitalization.characters,
                             decoration: InputDecoration(
                               filled: true,
-                              fillColor: const Color.fromRGBO(52, 54, 70, 100),
+                              fillColor: const Color.fromRGBO(
+                                  52, 54, 70, 100),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius:
+                                    BorderRadius.circular(12),
                               ),
                             ),
                             validator: (value) {
@@ -234,13 +244,16 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
-                      style: const TextStyle(color: Colors.white, height: 1),
+                      style: const TextStyle(
+                          color: Colors.white, height: 1),
                       enableInteractiveSelection: false,
                       autofocus: true,
-                      textCapitalization: TextCapitalization.characters,
+                      textCapitalization:
+                          TextCapitalization.characters,
                       decoration: InputDecoration(
                         filled: true,
-                        fillColor: const Color.fromRGBO(52, 54, 70, 100),
+                        fillColor:
+                            const Color.fromRGBO(52, 54, 70, 100),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
@@ -250,9 +263,9 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                           return 'Por favor ingresa tu correo electrónico';
                         }
                         // Validación de correo electrónico usando una expresión regular
-                        bool isValidEmail =
-                            RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                                .hasMatch(value);
+                        bool isValidEmail = RegExp(
+                                r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                            .hasMatch(value);
                         if (!isValidEmail) {
                           return 'Por favor ingresa un correo electrónico válido';
                         }
@@ -281,17 +294,20 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                           ),
                           const SizedBox(height: 10),
                           TextFormField(
-                            style:
-                                const TextStyle(color: Colors.white, height: 1),
+                            style: const TextStyle(
+                                color: Colors.white, height: 1),
                             obscureText: true,
                             enableInteractiveSelection: false,
                             autofocus: true,
-                            textCapitalization: TextCapitalization.characters,
+                            textCapitalization:
+                                TextCapitalization.characters,
                             decoration: InputDecoration(
                               filled: true,
-                              fillColor: const Color.fromRGBO(52, 54, 70, 100),
+                              fillColor: const Color.fromRGBO(
+                                  52, 54, 70, 100),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius:
+                                    BorderRadius.circular(12),
                               ),
                             ),
                             validator: (value) {
@@ -327,17 +343,20 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                           ),
                           const SizedBox(height: 10),
                           TextFormField(
-                            style:
-                                const TextStyle(color: Colors.white, height: 1),
+                            style: const TextStyle(
+                                color: Colors.white, height: 1),
                             obscureText: true,
                             enableInteractiveSelection: false,
                             autofocus: true,
-                            textCapitalization: TextCapitalization.characters,
+                            textCapitalization:
+                                TextCapitalization.characters,
                             decoration: InputDecoration(
                               filled: true,
-                              fillColor: const Color.fromRGBO(52, 54, 70, 100),
+                              fillColor: const Color.fromRGBO(
+                                  52, 54, 70, 100),
                               border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius:
+                                    BorderRadius.circular(12),
                               ),
                             ),
                             validator: (value) {
@@ -368,8 +387,8 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                       fontFamily: 'PT Sans',
                     ),
                   ),
-                  contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+                  contentPadding: const EdgeInsets.symmetric(
+                      horizontal: 0, vertical: 0),
                   controlAffinity: ListTileControlAffinity.leading,
                   value: _aceptaTerminos,
                   onChanged: (newValue) {
@@ -388,8 +407,8 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                       Colors.white.withOpacity(0.2),
                     ),
                     minimumSize: MaterialStateProperty.all<Size>(
-                      const Size(
-                          double.infinity, 50), // Ancho máximo y altura deseada
+                      const Size(double.infinity,
+                          50), // Ancho máximo y altura deseada
                     ),
                   ),
                   onPressed: () {
@@ -411,12 +430,15 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
                   '¿Ya tienes una cuenta? Inicia sesión',
                   style: TextStyle(color: Colors.white),
                 ),
-                const InkWell(
-                  child: Text(
+                InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/login');
+                  },
+                  child: const Text(
                     'desde aquí',
                     style: TextStyle(color: Colors.blue),
                   ),
-                )
+                ),
               ],
             ),
           ),

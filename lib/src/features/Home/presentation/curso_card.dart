@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:yachay/src/features/Home/data/curso.dart';
 
-class OneCard extends StatelessWidget {
-  const OneCard({
-    super.key,
-  });
+class CursoCard extends StatelessWidget {
+  final Curso curso;
+  const CursoCard(this.curso, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,37 +27,40 @@ class OneCard extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(
                       10.0), // Redondez de los bordes
-                  image: const DecorationImage(
-                    image: NetworkImage(
-                        'https://googleflutter.com/sample_image.jpg'),
+                  image: DecorationImage(
+                    image: NetworkImage(curso.imagenurl),
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
-              child: Text(
-                  'Adobe Photoshop desde cero hasta intermedio',
-                  style: TextStyle(
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8, 0, 8, 4),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  curso.nombre,
+                  style: const TextStyle(
                       color: Colors.white,
                       height: 0.9,
                       fontSize: 11.0,
-                      fontWeight: FontWeight.w400)),
+                      fontWeight: FontWeight.w400),
+                ),
+              ),
             ),
-            const Padding(
-                padding: EdgeInsets.fromLTRB(8, 4, 0, 0),
+            Padding(
+                padding: const EdgeInsets.fromLTRB(8, 4, 0, 0),
                 child: Row(
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       backgroundImage: NetworkImage(
-                          'https://googleflutter.com/sample_image.jpg'),
+                          'https://cdn-icons-png.flaticon.com/512/3135/3135768.png'),
                       radius: 7,
                     ),
                     Padding(
-                      padding: EdgeInsets.fromLTRB(4, 0, 0, 0),
-                      child: Text('Nombre del autor',
-                          style: TextStyle(
+                      padding: const EdgeInsets.fromLTRB(4, 0, 0, 0),
+                      child: Text(curso.profesor,
+                          style: const TextStyle(
                               color: Colors.white,
                               fontSize: 9.0,
                               fontWeight: FontWeight.w400)),
