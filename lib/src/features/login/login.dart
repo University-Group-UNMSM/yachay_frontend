@@ -14,14 +14,46 @@ class MyAppLogin extends StatefulWidget {
 
 void main() => runApp(MyApp());
 
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: MyAppLogin(),
+    );
+  }
+}
+
+class User {
+  final String email;
+  final String pass;
+
+  User(this.email, this.pass);
+
+  bool verificarCredenciales(String emailToCheck, String passToCheck) {
+    return email == emailToCheck && pass == passToCheck;
+  }
+}
+
 class _MyAppLoginState extends State<MyAppLogin> {
-  String _nombre = '';
-  String _apellido = '';
-  String _email = '';
-  String _contrasena = '';
-  String _repeticionContrasena = '';
-  bool _aceptaTerminos = false;
+  bool _aceptaRecordarSesion = false;
   bool _showPassword = false;
+  TextEditingController user = TextEditingController();
+  TextEditingController pass = TextEditingController();
+
+  final List<User> _users = [
+    User('user1', 'pass1'),
+    User('user2', 'pass2'),
+    User('user3', 'pass3'),
+  ];
+
+  bool validacionDatos(String email, String pass) {
+    for (User user in _users) {
+      if (user.verificarCredenciales(email, pass)) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +62,7 @@ class _MyAppLoginState extends State<MyAppLogin> {
       body: ListView(
         padding: EdgeInsets.symmetric(
           horizontal: 30.0,
-          vertical: 50.0,
+          vertical: 15.0,
         ),
         children: <Widget>[
           Form(
@@ -46,10 +78,10 @@ class _MyAppLoginState extends State<MyAppLogin> {
                   style: TextStyle(
                     color: Colors.white,
                     fontFamily: 'Open Sans',
-                    fontSize: 36.0,
+                    fontSize: 25.0,
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 30),
                 Text(
                   '¡Bienvenido de vuelta! Ingresa tus datos, por favor.',
                   style: TextStyle(
@@ -58,17 +90,9 @@ class _MyAppLoginState extends State<MyAppLogin> {
                     fontSize: 14.0,
                   ),
                 ),
-                SizedBox(height: 15),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SizedBox(width: 20),
-                  ],
-                ),
-                SizedBox(height: 15),
+                SizedBox(height: 30),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment
-                      .start, // Alinea los elementos al inicio del eje transversal (horizontal)
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       'Correo electrónico',
@@ -80,6 +104,7 @@ class _MyAppLoginState extends State<MyAppLogin> {
                     ),
                     SizedBox(height: 10),
                     TextFormField(
+                      controller: user,
                       enableInteractiveSelection: false,
                       autofocus: true,
                       textCapitalization: TextCapitalization.characters,
@@ -90,21 +115,12 @@ class _MyAppLoginState extends State<MyAppLogin> {
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                       ),
+                      style: TextStyle(color: Colors.white),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Por favor ingresa tu correo electrónico';
                         }
-                        // Validación de correo electrónico usando una expresión regular
-                        bool isValidEmail =
-                            RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                                .hasMatch(value);
-                        if (!isValidEmail) {
-                          return 'Por favor ingresa un correo electrónico válido';
-                        }
                         return null;
-                      },
-                      onSaved: (value) {
-                        _email = value!;
                       },
                     ),
                   ],
@@ -126,8 +142,8 @@ class _MyAppLoginState extends State<MyAppLogin> {
                           ),
                           SizedBox(height: 10),
                           TextFormField(
-                            obscureText:
-                                !_showPassword, // Mostrar u ocultar la contraseña según el estado de _showPassword
+                            controller: pass,
+                            obscureText: !_showPassword,
                             enableInteractiveSelection: false,
                             autofocus: true,
                             textCapitalization: TextCapitalization.characters,
@@ -139,7 +155,6 @@ class _MyAppLoginState extends State<MyAppLogin> {
                               ),
                               suffixIcon: InkWell(
                                 onTap: () {
-                                  // Cambiar el estado de _showPassword para alternar la visibilidad de la contraseña
                                   setState(() {
                                     _showPassword = !_showPassword;
                                   });
@@ -147,52 +162,66 @@ class _MyAppLoginState extends State<MyAppLogin> {
                                 child: Icon(
                                   _showPassword
                                       ? Icons.visibility
-                                      : Icons
-                                          .visibility_off, // Mostrar el icono correspondiente según el estado de _showPassword
+                                      : Icons.visibility_off,
                                   color: Colors.white,
                                 ),
                               ),
                             ),
+                            style: TextStyle(color: Colors.white),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Ingrese su contraseña';
                               }
-                              if (value.length < 6) {
-                                return 'Contraseña incorrecta';
-                              }
                               return null;
-                            },
-                            onSaved: (value) {
-                              _contrasena = value!;
                             },
                           )
                         ],
                       ),
                     ),
-                    SizedBox(
-                        width:
-                            10), // Espacio entre los campos de nombre y apellido
                   ],
                 ),
-                SizedBox(height: 30),
-                CheckboxListTile(
-                  title: Text(
-                    'Recuérdame',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 10.0,
-                      fontFamily: 'PT Sans',
+                SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        // Pendiente la lógica para recuperar contraseña
+                      },
+                      child: Text(
+                        '¿Olvidaste tu contraseña?',
+                        style: TextStyle(
+                          fontFamily: 'PT Sans',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12.0,
+                          color: Color(0xFF0177FB),
+                        ),
+                      ),
                     ),
-                  ),
-                  controlAffinity: ListTileControlAffinity.leading,
-                  value: _aceptaTerminos,
-                  onChanged: (newValue) {
-                    setState(() {
-                      _aceptaTerminos = newValue!;
-                    });
-                  },
+                    Row(
+                      children: [
+                        Text(
+                          'Recuérdame',
+                          style: TextStyle(
+                            fontFamily: 'PT Sans',
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12.0,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Checkbox(
+                          value: _aceptaRecordarSesion,
+                          onChanged: (newValue) {
+                            setState(() {
+                              _aceptaRecordarSesion = newValue!;
+                            });
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: 35),
                 TextButton(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(
@@ -202,19 +231,66 @@ class _MyAppLoginState extends State<MyAppLogin> {
                       Colors.white.withOpacity(0.2),
                     ),
                     minimumSize: MaterialStateProperty.all<Size>(
-                      Size(
-                          double.infinity, 50), // Ancho máximo y altura deseada
+                      Size(double.infinity, 50),
                     ),
                   ),
                   onPressed: () {
-                    _formKey.currentState!.validate();
+                    if (_formKey.currentState!.validate()) {
+                      _formKey.currentState!.save();
+                      if (validacionDatos(user.text, pass.text) == true) {
+                        // Imprimir mensaje de éxito
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Inicio exitoso'),
+                          ),
+                        );
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text('Correo o contraseña incorrectos'),
+                          ),
+                        );
+                      }
+                    }
                   },
                   child: Text(
-                    'Regístrate',
+                    'Iniciar sesión',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 12.0,
                       fontFamily: 'PT Sans',
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10.0),
+                SizedBox(
+                  width: double.infinity,
+                  child: OutlinedButton(
+                    onPressed: () {
+                      // Pendiente la lógica para iniciar sesión con Google
+                    },
+                    child: Text('Iniciar sesión con Google',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14.0,
+                            fontFamily: 'PT Sans')),
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: Colors.white),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10.0),
+                InkWell(
+                  onTap: () {
+                    // Pendiente la lógica para navegar a la pantalla de registro
+                  },
+                  child: Text(
+                    '¿Aún no tienes una cuenta? Registrarte aquí.',
+                    style: TextStyle(
+                      fontFamily: 'PT Sans',
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12.0,
+                      color: Color(0xFF0177FB),
                     ),
                   ),
                 ),
