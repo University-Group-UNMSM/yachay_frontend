@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yachay/src/features/Home/presentation/cursos_list.dart';
 import 'package:yachay/src/features/MisCursos/presentation/miscursos.dart';
+import 'package:yachay/src/features/perfil/presentation/perfil.dart';
 
 class HomePrincipal extends StatefulWidget {
   const HomePrincipal({super.key});
@@ -21,7 +22,7 @@ class _HomePrincipalState extends State<HomePrincipal> {
             backgroundColor: const Color(0xff2a2c3e),
             leading: Padding(
               padding: const EdgeInsets.all(10),
-              child: Image.asset('../assets/istotipo-yanachay.png'),
+              child: Image.asset('assets/istotipo-yanachay.png'),
             ), // Nuevo widget leading
 
             actions: const [

@@ -42,7 +42,7 @@ class _MyAppLoginState extends State<MyAppLogin> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
-                  child: Image.asset('../assets/isotipo-azul.png'),
+                  child: Image.asset('assets/isotipo-azul.png'),
                 ),
                 const Text(
                   'Bienvenido',

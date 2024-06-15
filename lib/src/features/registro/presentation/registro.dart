@@ -34,7 +34,7 @@ class _MyAppRegistroState extends State<MyAppRegistro> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Center(
-                  child: Image.asset('../assets/isotipo-azul.png'),
+                  child: Image.asset('assets/isotipo-azul.png'),
                 ),
                 const Align(
                   alignment: Alignment.centerLeft,
